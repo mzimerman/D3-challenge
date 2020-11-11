@@ -1,8 +1,7 @@
 // @TODO: YOUR CODE HERE!
 function makeResponsive() {
 
-    // if the SVG area isn't empty when the browser loads,
-    // remove it and replace it with a resized version of the chart
+    // if the SVG area isn't empty when the browser loads, remove it and replace it with a resized version of the chart
     var svgArea = d3.select("body").select("svg");
   
     // clear svg is not empty
@@ -10,8 +9,7 @@ function makeResponsive() {
       svgArea.remove();
     }
   
-    // SVG wrapper dimensions are determined by the current width and
-    // height of the browser window.
+    // SVG wrapper dimensions are determined by the current width and height of the browser window.
     var svgWidth = window.innerWidth;
     var svgHeight = window.innerHeight/1.5;
   
@@ -25,8 +23,7 @@ function makeResponsive() {
     var width = svgWidth - margin.left - margin.right;
     var height = svgHeight - margin.top - margin.bottom;
   
-    // Create an SVG wrapper, append an SVG group that will hold our chart,
-    // and shift the latter by left and top margins.
+    // Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
     var svg = d3
       .select("#scatter")
       .append("svg")
@@ -43,7 +40,6 @@ function makeResponsive() {
   
     // function used for updating x-scale var upon click on axis label
     function xScale(csvData, chosenXAxis) {
-      // create scales
       var xLinearScale = d3.scaleLinear()
         .domain([d3.min(csvData, d => d[chosenXAxis]) * 0.85,
           d3.max(csvData, d => d[chosenXAxis]) * 1.15
@@ -53,7 +49,6 @@ function makeResponsive() {
     }
   // function used for updating y-scale var upon click on axis label
     function yScale(csvData, chosenYAxis) {
-      // create scales
       var yLinearScale = d3.scaleLinear()
         .domain([d3.min(csvData, d => d[chosenYAxis]) * 0.85,
           d3.max(csvData, d => d[chosenYAxis]) * 1.15
@@ -219,21 +214,21 @@ function makeResponsive() {
       var povertyLabel = xlabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 20)
-        .attr("value", "poverty") // value to grab for event listener
+        .attr("value", "poverty") 
         .classed("active", true)
         .text("In Poverty (%)");
   
       var ageLabel = xlabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 40)
-        .attr("value", "age") // value to grab for event listener
+        .attr("value", "age") 
         .classed("inactive", true)
         .text("Age (Median)");
    
       var incomeLabel = xlabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 60)
-        .attr("value", "income") // value to grab for event listener
+        .attr("value", "income") 
         .classed("inactive", true)
         .text("Household Income (Median)");
   
@@ -244,21 +239,21 @@ function makeResponsive() {
       var obeseLabel = ylabelsGroup.append("text")
         .attr("y", 20 - margin.left)
         .attr("x", 0 - (height / 2))
-        .attr("value", "obesity") // value to grab for event listener
+        .attr("value", "obesity") 
         .classed("active", true)
         .text("Obese (%)");
   
       var smokesLabel = ylabelsGroup.append("text")
         .attr("y", 40 - margin.left)
         .attr("x", 0 - (height / 2))
-        .attr("value", "smokes") // value to grab for event listener
+        .attr("value", "smokes") 
         .classed("inactive", true)
         .text("Smokes (%)");
   
       var healthLabel = ylabelsGroup.append("text")
         .attr("y", 60 - margin.left)
         .attr("x", 0 - (height / 2))
-        .attr("value", "healthcare") // value to grab for event listener
+        .attr("value", "healthcare") 
         .classed("inactive", true)
         .text("Lacks Healthcare (%)");
       
@@ -275,7 +270,6 @@ function makeResponsive() {
             // replaces chosenXAxis with value
             chosenXAxis = value;
   
-            // functions here found above csv import
             // updates x scale for new data
             xLinearScale = xScale(csvData, chosenXAxis);
   
@@ -337,8 +331,7 @@ function makeResponsive() {
   
             // replaces chosenYAxis with value
             chosenYAxis = value;
-  
-            // functions here found above csv import
+
             // updates y scale for new data
             yLinearScale = yScale(csvData, chosenYAxis);
   
